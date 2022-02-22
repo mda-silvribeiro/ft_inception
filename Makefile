@@ -1,9 +1,9 @@
 SRC = cd srcs && docker-compose -f docker-compose.yml
-# --env-file .env 
 
 start:
-	@cd /home/$(USER)/ ; mkdir -pv data; cd data ; mkdir -pv mariadb wordpress wp db
-	@cd /home/$(USER)/data/ ; chmod 777 mariadb wordpress wp db
+	@sudo echo "127.0.0.1 mda-silv.42.fr" | sudo tee -a /etc/hosts 
+	@cd /home/$(USER)/ ; mkdir -pv data; cd data ; mkdir -pv mariadb wordpress
+	@cd /home/$(USER)/data/ ; chmod 777 mariadb wordpress
 	$(SRC) up -d
 
 down:
